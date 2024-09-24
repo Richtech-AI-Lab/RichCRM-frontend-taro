@@ -7,7 +7,7 @@ import Taro from '@tarojs/taro';
 import { padQuery } from './utils';
 
 type NavigateParams = {
-  type?: 'navigate' | 'navigateBack' | 'navigateBackTo' | 'redirect' | 'reLaunch';
+  type?: 'navigate' | 'navigateBack' | 'navigateBackTo' | 'redirect' | 'reLaunch' | 'switchTab';
   path?: string;
   query?: Record<string, any>;
   delta?: number;
@@ -50,6 +50,10 @@ export function navigateTo(params: NavigateParams = {}) {
 
   if (type === 'navigateBack') {
     return Taro.navigateBack({ delta });
+  }
+
+  if (type == "switchTab") {
+    return Taro.switchTab({ url })
   }
 
   if (type === 'navigateBackTo') {

@@ -3,13 +3,17 @@ import { isObject, rpx2px } from './utils';
 
 /** 获取系统信息 */
 export function getSystemInfo() {
-  const systemInfo = Taro.getSystemInfoSync();
+  const deviceInfo = Taro.getDeviceInfo();
+  const windowInfo = Taro.getWindowInfo();
+  console.log('deviceInfo', deviceInfo);
+  console.log('windowInfo', windowInfo);
   // 导航栏高度
   let rect: any = null; //胶囊按钮位置信息
   try {
     rect = Taro.getMenuButtonBoundingClientRect
       ? Taro.getMenuButtonBoundingClientRect()
       : null;
+    console.log(rect)
     if (rect === null) {
       throw 'getMenuButtonBoundingClientRect error';
     }
@@ -20,11 +24,11 @@ export function getSystemInfo() {
   } catch (error) {
     let gap = 0; // 胶囊按钮上下间距 使导航内容居中
     let width = 96; // 胶囊的宽度，android大部分96，ios为88
-    if (systemInfo.platform === 'android') {
+    if (deviceInfo.platform === 'android') {
       gap = 8;
       width = 96;
-    } else if (systemInfo.platform === 'devtools') {
-      if (`${systemInfo.system}`.toLowerCase().includes('ios')) {
+    } else if (deviceInfo.platform === 'devtools') {
+      if (`${deviceInfo.system}`.toLowerCase().includes('ios')) {
         gap = 5.5; // 开发工具中ios手机
       } else {
         gap = 7.5; // 开发工具中android和其他手机
@@ -33,30 +37,31 @@ export function getSystemInfo() {
       gap = 4;
       width = 88;
     }
-    if (!systemInfo.statusBarHeight) {
+    if (!windowInfo.statusBarHeight) {
       // 开启wifi的情况下修复statusBarHeight值获取不到
-      systemInfo.statusBarHeight =
-        systemInfo.screenHeight - systemInfo.windowHeight - 20;
+      windowInfo.statusBarHeight =
+        windowInfo.screenHeight - windowInfo.windowHeight - 20;
     }
     rect = {
       // 获取不到胶囊信息就自定义重置一个
-      bottom: systemInfo.statusBarHeight + gap + 32,
+      bottom: windowInfo.statusBarHeight + gap + 32,
       height: 32,
-      left: systemInfo.windowWidth - width - 10,
-      right: systemInfo.windowWidth - 10,
-      top: systemInfo.statusBarHeight + gap,
+      left: windowInfo.windowWidth - width - 10,
+      right: windowInfo.windowWidth - 10,
+      top: windowInfo.statusBarHeight + gap,
       width: width
     };
   }
-  const gap = rect.top - systemInfo.statusBarHeight!; // 动态计算每台手机状态栏到胶囊按钮间距
+  const gap = rect.top - windowInfo.statusBarHeight!; // 动态计算每台手机状态栏到胶囊按钮间距
   const navBarHeight = 2 * gap + rect.height;
   const safeTopDistance = rect.bottom;
-  const systemText = `${systemInfo.system}`.toLowerCase();
+  const systemText = `${deviceInfo.system}`.toLowerCase();
   return {
-    ...systemInfo,
+    ...deviceInfo,
+    ...windowInfo,
     navBarHeight,
     safeTopDistance,
-    headerHeight: systemInfo.statusBarHeight + navBarHeight,
+    headerHeight: windowInfo.statusBarHeight + navBarHeight,
     isIOS: systemText.includes('ios') || systemText.includes('mac'),
     rect
   };
@@ -101,4 +106,14 @@ export function classNames(...args: any[]) {
       return name;
     })
     .join(' ');
+}
+
+
+/**
+ * 获取导航栏高度
+ * @returns {number}
+ */
+export function getNavBarHeight() {
+  const { navBarHeight } = getSystemInfo();
+  return navBarHeight;
 }

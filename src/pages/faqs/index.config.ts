@@ -1,10 +1,10 @@
 /*
- * @description: 功能
+ * @description: 配置
  * @author: Yoke
- * @Date: 2024-09-23 14:47:40
+ * @Date: 2024-09-24 09:23:10
  */
 export default definePageConfig({
-  navigationBarTitleText: '登录',
+  navigationBarTitleText: 'FAQs',
   navigationStyle: 'custom',
   navigationBarBackgroundColor: '#F3F3F8',
 })

@@ -3,10 +3,10 @@
  * @author: Yoke
  * @Date: 2024-09-23 11:51:29
  */
-import { View, Text, Navigator } from '@tarojs/components'
+import Layout from '@/components/layout'
+import { Text } from '@tarojs/components'
 import { useLoad } from '@tarojs/taro'
 import './index.less'
-import { navigateTo } from '@/utils/navigetoTo'
 
 export default function Index() {
   useLoad(() => {
@@ -14,8 +14,8 @@ export default function Index() {
   })
 
   return (
-    <View className='index'>
-      <Text>这是主页</Text>
-    </View>
+    <Layout title={'Contacts'}>
+      <Text>这是Contacts</Text>
+    </Layout>
   )
 }

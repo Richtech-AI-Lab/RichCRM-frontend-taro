@@ -15,7 +15,7 @@ export default function Index() {
 
   return (
     <View className='index'>
-      <Text>这是主页</Text>
+      <Text>这是me</Text>
     </View>
   )
 }
