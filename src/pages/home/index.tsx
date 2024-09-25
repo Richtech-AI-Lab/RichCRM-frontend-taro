@@ -1,8 +1,3 @@
-/*
- * @description: 主页
- * @author: Yoke
- * @Date: 2024-09-23 11:51:29
- */
 import Layout from '@/components/layout'
 import { Text } from '@tarojs/components'
 import { useLoad } from '@tarojs/taro'
@@ -14,8 +9,8 @@ export default function Index() {
   })
 
   return (
-    <Layout title={'Home'}>
-      <Text>主页</Text>
+    <Layout title={'首页'}>
+      <Text>首页</Text>
     </Layout>
   )
 }

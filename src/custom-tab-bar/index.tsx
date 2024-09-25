@@ -51,8 +51,8 @@ const Index = () => {
       path: list[index].pagePath
     })
   }
-
-  return <View className={styles.tab_bar}>
+  // TODO: 在真机调试的时候，发现点击切换tabbar的时候，图标或者自定义样式会有异常变化 why？探究中...
+  return <View className={styles.tab_bar} id="tab_bar">
     {list.map((item, index) => {
       return (
         <View className={classNames(selected === index ? styles.tab_bar_item_active : styles.tab_bar_item)} onClick={() => changeTab(index)}>
