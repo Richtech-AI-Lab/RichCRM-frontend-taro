@@ -10,6 +10,7 @@ import { classNames } from '@/utils/tools';
 import { BaseEventOrig, Button, Form, Input, InputProps, Text, View } from '@tarojs/components';
 import { useState } from 'react';
 import styles from "./index.module.less";
+import { useCaseDataStore } from '@/store';
 
 // 值
 type ValuesType = "serial_number" | "surname"
@@ -20,6 +21,8 @@ type Values<T> = {
 };
 
 export default function Index() {
+
+  const caseDataStore = useCaseDataStore()
 
   // 效验状态
   const [statusValues, setStatusValues] = useState<Values<boolean>>({
@@ -37,27 +40,30 @@ export default function Index() {
     if (!values?.surname) {
       setStatus("surname", true)
     }
+    navigateTo({
+      type: "switchTab",
+      path: "/pages/home/index"
+    })
+    // if (values?.serial_number && values?.surname) {
 
-    if (values?.serial_number && values?.surname) {
-
-      getMatchCaseInfo(values?.serial_number).then(res => {
-        if (res.data?.status == "success") {
-          const list = res.data?.data
-          const find = list.filter(item => item.clientName == values?.surname)
-          if (find?.length) {
-            navigateTo({
-              type: "switchTab",
-              path: "/pages/home/index"
-            })
-          } else {
-            $toast.show("案件匹配失败")
-          }
-        } else {
-          $toast.show("案件编号错误")
-        }
-      })
-
-    }
+    //   getMatchCaseInfo(values?.serial_number).then(res => {
+    //     if (res.data?.status == "success") {
+    //       const list = res.data?.data
+    //       const find = list.filter(item => item.clientName == values?.surname)
+    //       if (find?.length) {
+    //         caseDataStore.setData(find[0])
+    //         navigateTo({
+    //           type: "switchTab",
+    //           path: "/pages/home/index"
+    //         })
+    //       } else {
+    //         $toast.show("案件匹配失败")
+    //       }
+    //     } else {
+    //       $toast.show("案件编号错误")
+    //     }
+    //   })
+    // }
   }
 
 

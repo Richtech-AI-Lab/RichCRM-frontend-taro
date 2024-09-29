@@ -2,7 +2,7 @@
   "miniprogramRoot": "./dist",
   "projectname": "RichCRM-frontend-taro",
   "description": "",
-  "appid": "touristappid",
+  "appid": "wx3ffb03febd8bc2cd",
   "setting": {
     "urlCheck": true,
     "es6": false,
