@@ -1,0 +1,9 @@
+{
+    "symbol_url": "//at.alicdn.com/t/c/font_4696448_zmwrhmwba3p.js",
+    "parse_local_svg": false,
+    "local_svg_dir": "./src/assert/svg",
+    "save_dir": "./src/components/iconfont",
+    "use_rpx": true,
+    "default_icon_size": 36,
+    "design_width": 750
+}
