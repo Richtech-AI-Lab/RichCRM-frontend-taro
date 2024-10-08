@@ -11,7 +11,7 @@ type Store<T> = {
   setData: (data: T) => void
 }
 
-const useCaseDataStore = create<Store<Partial<Result<Datum>>>>()((set) => ({
+const useCaseDataStore = create<Store<Partial<Datum>>>()((set) => ({
   data: {
     "caseId": "a257210c-b278-443f-bd9a-68570235eaef",
     "creatorId": "test1@gmail.com",

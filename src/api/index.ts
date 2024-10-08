@@ -24,7 +24,7 @@ export interface Datum {
 
 // 匹配案件信息
 export function getMatchCaseInfo<T extends string>(caseId: T) {
-  return request<Result<Datum>>({
+  return request<Result<Datum[]>>({
     url: `v1/case/${caseId}`,
     method: 'GET',
     skipInterceptor: true

@@ -40,30 +40,30 @@ export default function Index() {
     if (!values?.surname) {
       setStatus("surname", true)
     }
-    navigateTo({
-      type: "switchTab",
-      path: "/pages/home/index"
-    })
-    // if (values?.serial_number && values?.surname) {
+    // navigateTo({
+    //   type: "switchTab",
+    //   path: "/pages/home/index"
+    // })
+    if (values?.serial_number && values?.surname) {
 
-    //   getMatchCaseInfo(values?.serial_number).then(res => {
-    //     if (res.data?.status == "success") {
-    //       const list = res.data?.data
-    //       const find = list.filter(item => item.clientName == values?.surname)
-    //       if (find?.length) {
-    //         caseDataStore.setData(find[0])
-    //         navigateTo({
-    //           type: "switchTab",
-    //           path: "/pages/home/index"
-    //         })
-    //       } else {
-    //         $toast.show("案件匹配失败")
-    //       }
-    //     } else {
-    //       $toast.show("案件编号错误")
-    //     }
-    //   })
-    // }
+      getMatchCaseInfo(values?.serial_number).then(res => {
+        if (res.data?.status == "success") {
+          const list = res.data?.data
+          const find = list.filter(item => item.clientName == values?.surname)
+          if (find?.length) {
+            caseDataStore.setData(find[0])
+            navigateTo({
+              type: "switchTab",
+              path: "/pages/home/index"
+            })
+          } else {
+            $toast.show("案件匹配失败")
+          }
+        } else {
+          $toast.show("案件编号错误")
+        }
+      })
+    }
   }
 
 
