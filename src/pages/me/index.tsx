@@ -3,10 +3,9 @@
  * @author: Yoke
  * @Date: 2024-09-23 11:51:29
  */
-import { View, Text, Navigator } from '@tarojs/components'
+import { View, WebView } from '@tarojs/components'
 import { useLoad } from '@tarojs/taro'
 import './index.less'
-import { navigateTo } from '@/utils/navigetoTo'
 
 export default function Index() {
   useLoad(() => {
@@ -15,7 +14,7 @@ export default function Index() {
 
   return (
     <View className='index'>
-      <Text>这是me</Text>
+      <WebView src='https://mp.weixin.qq.com/s/vYqaYGsBfueiVOti3JIIxA' />
     </View>
   )
 }

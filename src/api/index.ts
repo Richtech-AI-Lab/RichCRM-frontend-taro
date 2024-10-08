@@ -6,7 +6,7 @@ export type Result<T> = {
   message: string;
 }
 
-interface Datum {
+export interface Datum {
   caseId: string;
   creatorId: string;
   premisesId: string;
