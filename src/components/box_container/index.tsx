@@ -6,7 +6,7 @@ type BoxContainerProps = {
 
 const BoxContainer = (props: BoxContainerProps) => {
   const { children } = props
-  return <View className="w-full bg-white rounded-xl shadow-lg p-4 mt-3">
+  return <View className="w-[99%] bg-white rounded-xl mx-auto shadow-lg p-4 mt-4 ">
     {children}
   </View>
 }

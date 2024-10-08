@@ -19,7 +19,7 @@ type LayoutPropsType = {
 
 const Layout = (props: LayoutPropsType) => {
   const { children, title, className, ...rest } = props
-  return <View className={classNames('px-[42px] bg-[#f3f3f8] h-full', className)}>
+  return <View className={classNames('px-[24px] bg-[#f3f3f8] h-full', className)}>
     <Header title={title} />
     <View className="layout">{children}</View>
   </View>

@@ -3,7 +3,7 @@
  * @author: Yoke
  * @Date: 2024-09-24 10:33:45
  */
-import { MatchCaseInfoData } from '@/api'
+import { Datum, Result } from '@/api'
 import { create } from 'zustand'
 
 type Store<T> = {
@@ -11,13 +11,13 @@ type Store<T> = {
   setData: (data: T) => void
 }
 
-const useCaseDataStore = create<Store<Partial<MatchCaseInfoData["data"][0]>>>()((set) => ({
+const useCaseDataStore = create<Store<Partial<Datum>>>()((set) => ({
   data: {
     "caseId": "a257210c-b278-443f-bd9a-68570235eaef",
     "creatorId": "test1@gmail.com",
     "premisesId": "4697b6c3-7205-4dda-8665-8f2cfcc02a3c",
     "premisesName": "3220 Fillmore St CONDO",
-    "stage": 4,
+    "stage": 0,
     "caseType": 1,
     "sellerId": "5aa1b857-7be8-4e05-a09e-cee73a94ef04",
     "clientName": "Johnson, Tom",

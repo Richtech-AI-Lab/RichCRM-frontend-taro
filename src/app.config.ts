@@ -32,10 +32,10 @@ export default defineAppConfig({
         pagePath: 'pages/contacts/index',
         text: 'Contacts',
       },
-      {
-        pagePath: 'pages/faqs/index',
-        text: 'FAQs',
-      },
+      // {
+      //   pagePath: 'pages/faqs/index',
+      //   text: 'FAQs',
+      // },
       {
         pagePath: 'pages/me/index',
         text: 'Me',

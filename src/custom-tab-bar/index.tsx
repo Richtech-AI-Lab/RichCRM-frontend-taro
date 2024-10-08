@@ -30,11 +30,11 @@ const Index = () => {
       selectedIconPath: contacts_active,
       iconPath: contacts,
     },
-    {
-      pagePath: '/pages/faqs/index',
-      selectedIconPath: faqs_active,
-      iconPath: faqs,
-    },
+    // {
+    //   pagePath: '/pages/faqs/index',
+    //   selectedIconPath: faqs_active,
+    //   iconPath: faqs,
+    // },
     {
       pagePath: '/pages/me/index',
       selectedIconPath: me_active,
