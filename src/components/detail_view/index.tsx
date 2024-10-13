@@ -1,3 +1,8 @@
+/*
+ * @description: 功能
+ * @author: Yoke
+ * @Date: 2024-09-28 10:05:41
+ */
 import { TaskInfoItemStatusList } from "@/api"
 import { CoverImage, View } from "@tarojs/components"
 import Loading from "@/assets/loading.png";
@@ -8,10 +13,21 @@ type DetailViewProps = {
 const DetailView = (props: DetailViewProps) => {
   const { list } = props;
   const status = list?.findIndex((item) => item.status === 1);
+  console.log(list, status, 'status')
   const statusIndex = status === -1 ? 0 : status;
 
 
   const getIcon = (index) => {
+    if (list[index]?.status === 1) {
+      return <CoverImage src={Loading} className="w-6 h-6 animate-spin" />
+    }
+
+    if (list[index]?.status === 2) {
+      return <CoverImage src={Finished} className="w-6 h-6" />
+    }
+
+    return null
+
     if (statusIndex) {
       if (index < statusIndex) {
         return <CoverImage src={Finished} className="w-6 h-6" />
@@ -42,8 +58,8 @@ const DetailView = (props: DetailViewProps) => {
       list.map((item, index) => {
         return <View key={index} className="flex justify-between items-center text-base py-4 last:border-0 border-b border-[#E2E2E7]">
           <View>
-            <View>{item.name}</View>
-            <View className="text-[24px] text-[#707684]">{getIconItemText(index)}</View>
+            <View className="text-[28px]">{item.name}</View>
+            <View className="text-[20px] text-[#707684]">{getIconItemText(index)}</View>
           </View>
           <View>
             <View>

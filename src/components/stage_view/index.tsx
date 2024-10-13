@@ -71,7 +71,7 @@ const StageView = (props: StageViewProps) => {
       return <View key={stage.key} className="h-14 relative">
         <View className="flex items-center">
           {items(index)}
-          <Text className="text-[20px] ml-8">{stage.name}</Text>
+          <Text className="text-[28px] ml-8">{stage.name}</Text>
         </View>
         {
           index === stages.length - 1 ? null : lineStyles(index)
