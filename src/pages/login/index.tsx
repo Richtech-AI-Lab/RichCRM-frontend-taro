@@ -49,7 +49,7 @@ export default function Index() {
       getMatchCaseInfo(values?.serial_number).then(res => {
         if (res.data?.status == "success") {
           const list = res.data?.data
-          const find = list.filter(item => item.clientName == values?.surname)
+          const find = list.filter(item => item.clientName?.split(", ").includes(values?.surname))
           if (find?.length) {
             caseDataStore.setData(find[0])
             navigateTo({
