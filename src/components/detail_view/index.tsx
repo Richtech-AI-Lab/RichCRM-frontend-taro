@@ -18,6 +18,10 @@ const DetailView = (props: DetailViewProps) => {
 
 
   const getIcon = (index) => {
+    if (status == -1 && index === 0) {
+      return <CoverImage src={Loading} className="w-6 h-6 animate-spin" />
+    }
+
     if (list[index]?.status === 1) {
       return <CoverImage src={Loading} className="w-6 h-6 animate-spin" />
     }
